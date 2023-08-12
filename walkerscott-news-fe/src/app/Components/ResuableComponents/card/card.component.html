@@ -1,14 +1,32 @@
-<div class="text-center row" style="background-color: beige; margin-bottom: 1rem;">
-    <div class="col-10">
-        <div>
-            <h3>{{article.title}}</h3>
-            <p>{{article.description}}</p>
+<div style="background-color: beige; margin-bottom: 1rem;">
+    <div class="text-center row" *ngIf="!editable">
+        <div class="col-10">
+            <div>
+                <h3>{{article.title}}</h3>
+                <p>{{article.description}}</p>
+                
+            </div>
         </div>
-    </div>
-    <div class="col-2">
-        <div>
-            <a class="btn btn-link">Edit</a>
-            <a class="btn btn-link">Delete</a>
+        <div class="col-2">
+            <div>
+                <a class="btn btn-link" (click)="ShowEditable()">Edit</a>
+                <a class="btn btn-link">Delete</a>
+            </div>
         </div>
+      </div>
+      <div *ngIf="editable">
+        <form [formGroup]="articleForm">
+            <div class="form-group" >
+              <label for="updatedTitle">Title</label>
+              <input type="text" name="updatedTitle" formControlName="updatedTitle" class="form-control" id="updatedTitle">
+            </div>
+            <div class="form-group">
+              <label for="updatedTitle">Description</label>
+              <textarea class="form-control" formControlName="updatedDescription" name="updatedDescription" id="updatedDescription" rows="3" ></textarea>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" (click)="Update()">Update</button>
+            <button type="button" class="btn btn-primary btn-danger btn-sm" (click)="Cancel()">Cancel</button>
+          </form>
+    
     </div>
-  </div>
+</div>

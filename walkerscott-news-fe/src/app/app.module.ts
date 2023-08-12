@@ -8,18 +8,23 @@ import { CardComponent } from './Components/ResuableComponents/card/card.compone
 import { NewsFeedsComponent } from './Components/NewsFeedComponents/news-feeds/news-feeds.component';
 import { ArticlesQueryService } from './Services/articles-query.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateArticleComponent } from './Components/NewsFeedComponents/create-article/create-article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CardComponent,
-    NewsFeedsComponent
+    NewsFeedsComponent,
+    CreateArticleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ArticlesQueryService],
   bootstrap: [AppComponent]

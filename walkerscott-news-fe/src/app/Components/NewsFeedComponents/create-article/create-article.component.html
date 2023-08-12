@@ -1,0 +1,19 @@
+<div>
+    <div *ngIf="!showCreateForm">
+        <a class="btn btn-link" (click)="Create()">Create</a>
+    </div>
+    <div *ngIf="showCreateForm">
+        <form [formGroup]="articleForm">
+            <div class="form-group" >
+              <label for="updatedTitle">Title</label>
+              <input type="text" name="newTitle" formControlName="newTitle" class="form-control" id="newTitle">
+            </div>
+            <div class="form-group">
+              <label for="updatedTitle">Description</label>
+              <textarea class="form-control" formControlName="newDescription" name="newDescription" id="newDescription" rows="3" ></textarea>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" (click)="Add()">Add</button>
+            <button type="button" class="btn btn-primary btn-danger btn-sm" (click)="Cancel()">Cancel</button>
+          </form>
+    </div>
+</div>
