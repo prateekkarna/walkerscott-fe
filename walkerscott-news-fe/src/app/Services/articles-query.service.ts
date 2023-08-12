@@ -12,7 +12,13 @@ export class ArticlesQueryService {
   
   GetNewsByPage(pageNo : number, perPage : number) : Observable<IApiRespone> {
       return this._httpClient
-      .get<IApiRespone>("https://localhost:7042/api/News/GetNewsByPage?pageNo=1&perPage=2");
+      .get<IApiRespone>("https://localhost:7042/api/News/GetNewsByPage?pageNo=" + pageNo + "&perPage=" + perPage);
       
   } 
+
+  GetNewsByUrl(url : string) : Observable<IApiRespone> {
+    return this._httpClient
+    .get<IApiRespone>(url);
+    
+} 
 }

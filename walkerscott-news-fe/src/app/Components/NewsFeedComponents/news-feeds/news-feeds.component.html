@@ -3,7 +3,9 @@
         <app-card [article]="article"></app-card>
     </div>
     <div>
-        <a class="btn btn-link" href = {{prevLink}} >Prev</a>
-        <a class="btn btn-link">Next</a>
+        
+
+        <button type="button" class="btn btn-primary btn-sm" (click)="GetPrevNewsFeeds()" [disabled]="prevDisabled">Prev</button>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="GetNextNewsFeeds()" [disabled]="nextDisabled">Next</button>    
     </div>
 </div>
