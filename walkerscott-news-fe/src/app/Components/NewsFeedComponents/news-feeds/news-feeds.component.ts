@@ -18,7 +18,7 @@ export class NewsFeedsComponent implements OnInit{
   articles! : IArticle[]
   noData : boolean = false;
   currentPageNo : number = 1;
-  perPageData : number = 1;
+  perPageData : number = 5;
   prevDisabled : boolean = false;
   nextDisabled : boolean = false;
 
