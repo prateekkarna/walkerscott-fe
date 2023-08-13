@@ -14,6 +14,7 @@ import { HomeComponent } from './Components/NewsFeedComponents/home/home.compone
 import { ErrorComponent } from './Components/CommonComponents/error/error.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
+import { EditNewsComponent } from './Components/ResuableComponents/edit-news/edit-news.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { appRoutes } from './app.routes';
     NewsFeedsComponent,
     CreateArticleComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    EditNewsComponent
   ],
   imports: [
     BrowserModule,

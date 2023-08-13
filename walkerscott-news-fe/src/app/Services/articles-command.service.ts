@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { IApiRespone, INewsResponse , IArticle} from '../models/IArticle';
+import { IApiRespone, INewsResponse , IArticle, IUpdateArticle, ICreateArticle} from '../models/IArticle';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class ArticlesCommandService {
 
   constructor(private _httpClient : HttpClient ) { }
 
-  UpdateArticle(article : IArticle) : Observable<IApiRespone> {
+  UpdateArticle(article : IUpdateArticle) : Observable<IApiRespone> {
     return this._httpClient.put<IApiRespone>("https://localhost:7042/api/News/UpdateArticle" , article);
   }
 
@@ -18,7 +18,7 @@ export class ArticlesCommandService {
     return this._httpClient.delete<IApiRespone>("https://localhost:7042/api/News/DeleteArticle?id=" + id );
   }
 
-  CreateArticle(article : IArticle):Observable<IApiRespone>{
+  CreateArticle(article : ICreateArticle):Observable<IApiRespone>{
     return this._httpClient.post<IApiRespone>("https://localhost:7042/api/News/CreateArticle", article);
   }
 }

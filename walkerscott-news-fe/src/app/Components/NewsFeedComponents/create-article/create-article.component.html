@@ -1,6 +1,9 @@
 <div>
     <div >
         <form [formGroup]="articleForm">
+          <div *ngIf="showError" class="form-group" >
+            <label for="error">{{error}}</label>
+          </div>
             <div class="form-group" >
               <label for="updatedTitle">Title</label>
               <input type="text" name="newTitle" formControlName="newTitle" class="form-control" id="newTitle">

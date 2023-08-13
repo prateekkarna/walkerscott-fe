@@ -1,21 +1,24 @@
 <div style="background-color: floralwhite; margin-bottom: 1rem;">
     <div class="text-center row" *ngIf="!editable">
-        <div class="col-10">
+        <div class="col-11">
             <div>
                 <h3>{{article.title}}</h3>
                 <p>{{article.description}}</p>
                 
             </div>
         </div>
-        <div class="col-2">
-            <div>
-                <a class="btn btn-link" (click)="ShowEditable()">Edit</a>
-                <a class="btn btn-link">Delete</a>
-            </div>
+        <div class="col-1" >
+            <!-- <div> -->
+                <a class="btn btn-link" (click)="ShowEditable()" ><i class="bi bi-pencil"></i></a>
+                <a class="btn btn-link" (click)="Delete()"><i class="bi bi-trash3"></i></a>
+            <!-- </div> -->
         </div>
       </div>
       <div *ngIf="editable">
         <form [formGroup]="articleForm">
+          <div *ngIf="showError" class="form-group" >
+            <label for="error">{{error}}</label>
+          </div>
             <div class="form-group" >
               <label for="updatedTitle">Title</label>
               <input type="text" name="updatedTitle" formControlName="updatedTitle" class="form-control" id="updatedTitle">

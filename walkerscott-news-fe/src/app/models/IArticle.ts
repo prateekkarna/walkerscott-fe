@@ -3,6 +3,35 @@ export interface IArticle{
     title : string,
     description : string,
     categoryName : string,
+    categoryId : number,
+}
+
+export interface ICreateArticle{
+    title : string,
+    description : string,
+    categoryId : number,
+}
+
+export class CreateArticle implements ICreateArticle{
+    title!: string
+    description!: string
+    categoryId!: number
+
+}
+
+export interface IUpdateArticle{
+    articleId : number
+    title : string,
+    description : string,
+    categoryId : number,
+}
+
+export class UpdateArticle implements IUpdateArticle{
+    articleId!: number
+    title!: string
+    description!: string
+    categoryId!: number
+
 }
 
 export interface INewsResponse {
