@@ -21,6 +21,7 @@ export class NewsFeedsComponent implements OnInit{
   perPageData : number = 5;
   prevDisabled : boolean = false;
   nextDisabled : boolean = false;
+  category! : string;
 
   ngOnInit(): void {
     let storedPage = sessionStorage.getItem('currentPage');

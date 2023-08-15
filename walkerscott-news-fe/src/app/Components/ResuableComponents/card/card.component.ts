@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IArticle, UpdateArticle } from '../../../models/IArticle';
+import { Category, IArticle, ICategory, ICategoryResponse, UpdateArticle } from '../../../models/IArticle';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { ArticlesCommandService } from 'src/app/Services/articles-command.service';
+import { CategoryQueryService } from 'src/app/Services/category-query.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,25 +14,49 @@ export class CardComponent implements OnInit{
   
   @Input()
   article!: IArticle;
-
+  categories!: ICategoryResponse;
+  category!: ICategory[];
   editable : boolean = false;
   showError : boolean = false;
   error : string = ""
+
+  categoryList = ["a", "b"];
   
   articleForm = new FormGroup({
     updatedTitle : new FormControl(),
+    updatedCategory : new FormControl(),
     updatedDescription: new FormControl()
   })
 
-  constructor(private _articlesCommandService : ArticlesCommandService, private _router:Router){} 
+  constructor(private _articlesCommandService : ArticlesCommandService,
+     private _router:Router,
+     private _categoryQueryService : CategoryQueryService){} 
 
   ngOnInit(): void {
+    this._categoryQueryService.GetCategories().subscribe(
+      {
+        next :(response) => {
+          if(response.isSuccess)
+          {
+            this.categories = response.data;
+            this.category = this.categories.categories;
+            this.showError = false;
+          }
+          else{
+            this.showError = true;
+          this.error = "An error occured."
+          }
+        }
+      }
+    )
     this.articleForm.get('updatedTitle')?.setValue(this.article.title)
+    this.articleForm.get('updatedCategory')?.setValue(this.article.categoryName)
     this.articleForm.get('updatedDescription')?.setValue(this.article.description)
   }
 
   ShowEditable(){
     this.articleForm.get('updatedTitle')?.setValue(this.article.title)
+    this.articleForm.get('updatedCategory')?.setValue(this.article.categoryName)
     this.articleForm.get('updatedDescription')?.setValue(this.article.description)
     this.editable = !this.editable;
   }
@@ -47,6 +72,8 @@ export class CardComponent implements OnInit{
     articleToUpdate.description = this.articleForm.value.updatedDescription;
     articleToUpdate.articleId = this.article.articleId;
     articleToUpdate.categoryId = this.article.categoryId;
+
+    
 
     this._articlesCommandService.UpdateArticle(articleToUpdate).subscribe({
       next : (response) => {
@@ -65,6 +92,7 @@ export class CardComponent implements OnInit{
         this.showError = true;
       }
     })
+    
     
   }
 

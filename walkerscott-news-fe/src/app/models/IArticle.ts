@@ -34,16 +34,38 @@ export class UpdateArticle implements IUpdateArticle{
 
 }
 
+export interface ICategory{
+    CategoryId : number,
+    CategoryName : string
+}
+
+export class Category implements ICategory{
+    CategoryId! : number
+    CategoryName! : string
+   
+}
+
 export interface INewsResponse {
     articles : IArticle[],
     prevPageLink : string,
     nextPageLink : string
 }
 
+export interface ICategoryResponse {
+    categories : ICategory[]
+}
+
 export interface IApiRespone{
     isSuccess : boolean,
     statusCode : number,
     data : INewsResponse,
+    errors : Errors
+}
+
+export interface ICategoryApiRespone{
+    isSuccess : boolean,
+    statusCode : number,
+    data : ICategoryResponse,
     errors : Errors
 }
 

@@ -7,6 +7,7 @@ import { NavbarComponent } from './Components/CommonComponents/navbar/navbar.com
 import { CardComponent } from './Components/ResuableComponents/card/card.component';
 import { NewsFeedsComponent } from './Components/NewsFeedComponents/news-feeds/news-feeds.component';
 import { ArticlesQueryService } from './Services/articles-query.service';
+import { CategoryQueryService } from './Services/category-query.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateArticleComponent } from './Components/NewsFeedComponents/create-article/create-article.component';
@@ -35,7 +36,7 @@ import { EditNewsComponent } from './Components/ResuableComponents/edit-news/edi
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)                
   ],
-  providers: [ArticlesQueryService],
+  providers: [ArticlesQueryService,CategoryQueryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
